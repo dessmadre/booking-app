@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - ./server/data:/data/db
+    ports:
+      - '27017:27017'
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - db
+    environment:
+      REDIS_HOST: redis
+      MONGO_DB: db
+
+    ports:
+      - '3001:3030'
+    volumes:
+      - /app/server/node_modules
+      - .:/app

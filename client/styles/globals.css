@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  width: calc(770px * 0.66);
+}
+
+.calendar {
+  max-width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.day {
+  width: calc(120px);
+  padding: calc(10px * 0.66);
+  height: 100px;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin: 3px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.day:hover {
+  background-color: #e8f4fa;
+}
+
+.day + .currentHour {
+  background: coral;
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  background-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}

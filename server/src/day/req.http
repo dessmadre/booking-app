@@ -1,0 +1,26 @@
+### Clear Day Collection
+DELETE http://localhost:3001/day/clear
+
+### Clear Hour Collection
+DELETE http://localhost:3001/hour/clear
+
+### Get Days
+GET http://localhost:3001/day
+
+### Seed Days
+GET http://localhost:3001/day/seed
+
+### Seed Hours
+GET http://localhost:3001/hour/seed
+
+### Return all hours
+GET http://localhost:3001/hour/
+
+### Return a single hour
+GET http://localhost:3001/hour/61455b7d4de5417b6ddc799c
+
+### Update Availablity of an hour to true
+PATCH http://localhost:3001/hour/61455b7d4de5417b6ddc799c/true
+
+### Update Availablity of an hour to false
+PATCH http://localhost:3001/hour/61455b7d4de5417b6ddc799c/false
