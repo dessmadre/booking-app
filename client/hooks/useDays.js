@@ -7,18 +7,27 @@ export const useDate = (nav) => {
 
   const fetchDays = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/day');
+      const { data } = await axios.get('http://localhost:3001/day');
 
-      return res.data;
+      return data;
     } catch (err) {
       console.log(err);
     }
   };
 
-  // const eventForDate = (date) => events.find((e) => e.date === date);
+  const fetchEvents = async () => {
+    try {
+      const { data } = axios.get('http://localhost:3001/event');
+
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(async () => {
     const daysAvailable = await fetchDays();
+    const events = await fetchEvents();
 
     const weekdays = [
       'Sunday',
@@ -57,9 +66,6 @@ export const useDate = (nav) => {
     const daysArr = [];
 
     for (let i = 1; i <= paddingDays + daysInMonth; i++) {
-      // Month/Day/Year
-      const dayString = `${month + 1}/${i - paddingDays}/${year}`;
-
       if (i > paddingDays) {
         daysArr.push({
           value: i - paddingDays,

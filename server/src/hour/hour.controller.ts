@@ -16,24 +16,14 @@ export class HourController {
     return this.hourService.getHour({ id });
   }
 
-  @Patch('/:id/isAvailable')
+  @Patch('/:id/true')
   async updateHourAvailTrue(@Param('id') id: Types.ObjectId) {
     return this.hourService.updateHourAvailTrue({ id });
   }
 
-  @Patch('/:id/notAvailable')
+  @Patch('/:id/false')
   async updateHourAvailFalse(@Param('id') id: Types.ObjectId) {
     return this.hourService.updateHourAvailFalse({ id });
-  }
-
-  @Patch('/:id/isBooked')
-  async updateHourBookedTrue(@Param('id') id: Types.ObjectId) {
-    return this.hourService.updateHourBookedTrue({ id });
-  }
-
-  @Patch('/:id/isBooked')
-  async updateHourBookedFalse(@Param('id') id: Types.ObjectId) {
-    return this.hourService.updateHourBookedFalse({ id });
   }
 
   @Delete('/clear')

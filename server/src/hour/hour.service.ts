@@ -76,34 +76,6 @@ export class HourService {
     return hour;
   }
 
-  async updateHourBookedTrue(updateHourDto: UpdateHourDto) {
-    const hour = await this.hourModel.findById(updateHourDto.id);
-
-    if (!hour) {
-      throw new BadRequestException();
-    }
-
-    hour.isBooked = true;
-
-    await hour.save();
-
-    return hour;
-  }
-
-  async updateHourBookedFalse(updateHourDto: UpdateHourDto) {
-    const hour = await this.hourModel.findById(updateHourDto.id);
-
-    if (!hour) {
-      throw new BadRequestException();
-    }
-
-    hour.isBooked = false;
-
-    await hour.save();
-
-    return hour;
-  }
-
   async clearHourCollection() {
     return this.hourModel.remove();
   }
