@@ -3,11 +3,5 @@ export class CreateEventDto {
 
   weekday: string;
 
-  day: string;
-
-  month: string;
-
-  year: string;
-
   dateString: string;
 }
