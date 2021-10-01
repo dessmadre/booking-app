@@ -14,7 +14,6 @@ services:
     depends_on:
       - db
     environment:
-      REDIS_HOST: redis
       MONGO_DB: db
 
     ports:
