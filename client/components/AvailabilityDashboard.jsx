@@ -16,10 +16,12 @@ export default function AvailabilityDashboard({ days }) {
   };
 
   return (
-    <div className='my-10 p-8 bg-gray-100 rounded-md shadow-xl'>
-      <h3 className='text-2xl font-semibold'>Set the days you are available</h3>
-      <div className='flex justify-evenly'>
-        <div className='mt-5 w-full'>
+    <section className='w-11/12 lg:w-2/3 xl:w-1/3 my-10 md:p-8 bg-gray-100 rounded-md shadow-xl self-stretch'>
+      <h3 className='text-xl md:text-2xl font-semibold p-3'>
+        Set the days you are available
+      </h3>
+      <article className='flex justify-evenly'>
+        <figure className='mt-5 w-full'>
           {days.map((d) => {
             return (
               <AvailabilitySetter
@@ -30,15 +32,15 @@ export default function AvailabilityDashboard({ days }) {
               />
             );
           })}
-        </div>
-      </div>
-      <div className='p-3 w-full flex justify-end'>
+        </figure>
+      </article>
+      <figure className='w-full flex justify-end'>
         <Link href={'/days'}>
-          <a className=' mt-5 p-5 bg-green-400 text-xl text-white font-bold hover:bg-green-500 rounded-3xl'>
+          <a className='mt-5 p-3 md:p-5 bg-green-400 md:text-xl text-white font-bold hover:bg-green-500 rounded-2xl md:rounded-3xl'>
             Set Hours
           </a>
         </Link>
-      </div>
-    </div>
+      </figure>
+    </section>
   );
 }
