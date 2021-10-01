@@ -13,6 +13,7 @@ export default function HourModal({ day, setDay }) {
   };
 
   const hours = day.weekday[0].hours;
+  const bookings = day.booking;
 
   return (
     <section
@@ -23,20 +24,23 @@ export default function HourModal({ day, setDay }) {
         <CalendarHeader dayDisplay={day.date} />
         <figure className='w-full flex flex-wrap justify-start py-3'>
           {hours.map((h) => {
+            const isBooked = bookings.filter((b) => b.hour === h.hour) || [];
             const [hour, beforeMidday] = h.hour.split(' ');
             return (
               <figure
                 key={h._id}
-                className={`w-1/4 md:w-1/6 md:h-1/4  flex flex-col justify-center items-center md:px-4 py-3 md:py-10`}
+                className={`w-1/4 md:w-1/6 md:h-1/4 flex flex-col justify-center items-center md:px-4 py-3 md:py-10`}
                 onClick={() => {
-                  if (h.isAvailable) {
+                  if (h.isAvailable && !isBooked.length) {
                     setBooking(day);
                     setHour(h);
                   }
                 }}
               >
                 <p
-                  className={`text-xs sm:text-sm md:text-xl  text-left uppercase h-full ${
+                  className={`text-xs sm:text-sm md:text-xl  text-left uppercase h-full
+                  ${isBooked.length ? 'bg-blue-400 hover:bg-blue-400' : ''}
+                  ${
                     h.isAvailable
                       ? 'text-black hover:bg-gray-200 cursor-pointer'
                       : 'text-gray-400 cursor-default'
