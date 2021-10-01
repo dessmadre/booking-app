@@ -15,18 +15,19 @@ export default function HourModal({ day, setDay }) {
   const hours = day.weekday[0].hours;
 
   return (
-    <div
+    <section
       className='backdrop fixed top-0 left-0 w-screen h-screen flex justify-center items-center'
       onClick={handleClick}
     >
-      <div className='w-5/6 h-5/6 bg-white rounded-2xl '>
+      <article className='md:max-w-3xl max-w-2xl bg-white rounded-2xl p-5'>
         <CalendarHeader dayDisplay={day.date} />
-        <div className='w-full h-5/6  flex flex-wrap justify-center pt-1 '>
+        <figure className='w-full bg-red-400 flex flex-wrap justify-start py-3'>
           {hours.map((h) => {
+            const [hour, beforeMidday] = h.hour.split(' ');
             return (
-              <div
+              <figure
                 key={h._id}
-                className='w-1/7 m-1  flex flex-col justify-center items-center'
+                className={`w-1/6 h-1/4 bg-indigo-200 flex flex-col justify-center items-center px-4 py-10`}
                 onClick={() => {
                   if (h.isAvailable) {
                     setBooking(day);
@@ -35,19 +36,20 @@ export default function HourModal({ day, setDay }) {
                 }}
               >
                 <p
-                  className={`text-xl ${
+                  className={`md:text-xl bg-pink-200 text-left uppercase h-full ${
                     h.isAvailable
                       ? 'text-black hover:bg-gray-200 cursor-pointer'
                       : 'text-gray-400 cursor-default'
-                  }  p-5 font-semibold rounded-full`}
+                  } px-4 py-2 font-semibold rounded-full`}
                 >
-                  {h.hour}
+                  {hour}
+                  <span className='text-xs md:text-sm'>{beforeMidday}</span>
                 </p>
-              </div>
+              </figure>
             );
           })}
-        </div>
-      </div>
+        </figure>
+      </article>
       {booking && (
         <BookingModal
           day={booking}
@@ -56,6 +58,6 @@ export default function HourModal({ day, setDay }) {
           setHour={setHour}
         />
       )}
-    </div>
+    </section>
   );
 }
