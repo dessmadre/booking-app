@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { Types } from 'mongoose';
 import { CreateEventDto } from './dto/createEvent.dto';
 import { EventService } from './event.service';
@@ -20,5 +20,10 @@ export class EventController {
   @Post('/new')
   async createEvent(@Body() createEventDto: CreateEventDto) {
     return this.eventService.createEvent(createEventDto);
+  }
+
+  @Delete('/:id')
+  async deleteEvent(@Param('id') id: Types.ObjectId) {
+    return this.eventService.deleteEvent({ id });
   }
 }
