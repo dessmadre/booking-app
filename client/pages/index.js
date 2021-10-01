@@ -20,7 +20,8 @@ export default function Home() {
 
   return (
     <main className='max-w-2xl flex flex-col justify-center m-auto'>
-      <header className='flex justify-evenly w-1/2 self-center items-baseline'>
+      <header className='flex justify-evenly w-4/5 self-center items-baseline'>
+        {/* Find better buttons icons for calendar navigation */}
         <button
           className='h-10 w-10 p-1 font-bold hover:bg-gray-200 rounded-full '
           onClick={() => setNav(nav - 1)}
