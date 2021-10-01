@@ -47,7 +47,7 @@ export default function Home() {
           return (
             <figure
               key={index}
-              className={`w-1/7 h-1/5  p-7 flex-0 ${
+              className={`w-1/7 h-1/5 p-5  md:p-7 flex-0 ${
                 d.value === 'padding' || !d.weekday[0].isAvailable
                   ? ' text-gray-400 cursor-default'
                   : 'text-black cursor-pointer hover:bg-gray-200 rounded-full'
