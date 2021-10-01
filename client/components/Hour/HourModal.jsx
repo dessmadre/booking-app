@@ -16,18 +16,18 @@ export default function HourModal({ day, setDay }) {
 
   return (
     <section
-      className='backdrop fixed top-0 left-0 w-screen h-screen flex justify-center items-center'
+      className='backdrop fixed top-0 left-0 w-screen h-screen flex justify-center items-center p-2'
       onClick={handleClick}
     >
-      <article className='md:max-w-3xl max-w-2xl bg-white rounded-2xl p-5'>
+      <article className='md:max-w-3xl max-w-2xl bg-white rounded-2xl p-3 md:p-5'>
         <CalendarHeader dayDisplay={day.date} />
-        <figure className='w-full bg-red-400 flex flex-wrap justify-start py-3'>
+        <figure className='w-full flex flex-wrap justify-start py-3'>
           {hours.map((h) => {
             const [hour, beforeMidday] = h.hour.split(' ');
             return (
               <figure
                 key={h._id}
-                className={`w-1/6 h-1/4 bg-indigo-200 flex flex-col justify-center items-center px-4 py-10`}
+                className={`w-1/4 md:w-1/6 md:h-1/4  flex flex-col justify-center items-center md:px-4 py-3 md:py-10`}
                 onClick={() => {
                   if (h.isAvailable) {
                     setBooking(day);
@@ -36,11 +36,11 @@ export default function HourModal({ day, setDay }) {
                 }}
               >
                 <p
-                  className={`md:text-xl bg-pink-200 text-left uppercase h-full ${
+                  className={`text-xs sm:text-sm md:text-xl  text-left uppercase h-full ${
                     h.isAvailable
                       ? 'text-black hover:bg-gray-200 cursor-pointer'
                       : 'text-gray-400 cursor-default'
-                  } px-4 py-2 font-semibold rounded-full`}
+                  } px-0.5 md:px-4 py-1 md:py-2 font-semibold rounded-full`}
                 >
                   {hour}
                   <span className='text-xs md:text-sm'>{beforeMidday}</span>
