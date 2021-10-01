@@ -1,6 +1,6 @@
 export default function DashBoardLayout({ children }) {
   return (
-    <div className='w-11/12 md:w-4/5 flex justify-center mx-auto'>
+    <div className='flex flex-col items-center justify-around flex-1'>
       {children}
     </div>
   );
