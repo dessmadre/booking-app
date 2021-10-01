@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CalendarHeader from '../components/CalendarHeader';
 import HourModal from '../components/Hour/HourModal';
 import { useDate } from '../hooks/useDays';
@@ -19,8 +19,8 @@ export default function Home() {
   ];
 
   return (
-    <div className='w-11/12 flex flex-col justify-center  m-auto'>
-      <div className='flex justify-evenly w-1/2 self-center items-baseline'>
+    <main className='max-w-2xl flex flex-col justify-center m-auto'>
+      <header className='flex justify-evenly w-1/2 self-center items-baseline'>
         <button
           className='h-10 w-10 p-1 font-bold hover:bg-gray-200 rounded-full '
           onClick={() => setNav(nav - 1)}
@@ -34,24 +34,24 @@ export default function Home() {
         >
           &raquo;
         </button>
-      </div>
-      <div className='flex justify-between'>
+      </header>
+      <section className=' flex justify-between'>
         {weekdays.map((w, index) => (
           <p key={index} className='w-full text-center font-semibold'>
             {w.day}
           </p>
         ))}
-      </div>
-      <div className='flex flex-wrap  p-2 mt-3'>
+      </section>
+      <section className='w-full flex flex-wrap p-2 mt-3 justify-start'>
         {days?.map((d, index) => {
           return (
-            <div
+            <figure
               key={index}
-              className={`w-1/8 p-7 ${
+              className={`w-1/7 h-1/5  p-7 flex-0 ${
                 d.value === 'padding' || !d.weekday[0].isAvailable
                   ? ' text-gray-400 cursor-default'
-                  : ' text-black cursor-pointer hover:bg-gray-200 rounded-full'
-              }  m-1.5 flex justify-center text-3xl font-semibold`}
+                  : 'text-black cursor-pointer hover:bg-gray-200 rounded-full'
+              }  flex justify-center text-3xl font-semibold`}
               onClick={() => {
                 if (d.weekday[0].isAvailable) {
                   setDay(d);
@@ -59,11 +59,11 @@ export default function Home() {
               }}
             >
               {d.value === 'padding' ? '' : d.value}
-            </div>
+            </figure>
           );
         })}
-      </div>
+      </section>
       {day && <HourModal day={day} setDay={setDay} />}
-    </div>
+    </main>
   );
 }
