@@ -20,7 +20,7 @@ export default function BookingModal({ day, hour, setBooking, setHour }) {
       await axios.post('http://localhost:3001/event/new', {
         hour: hour.hour,
         weekday: day.weekday[0].day,
-        dateTime: day.date,
+        dateString: day.date,
       });
       setBooking(null);
       setHour(null);

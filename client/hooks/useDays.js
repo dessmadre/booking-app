@@ -17,7 +17,7 @@ export const useDate = (nav) => {
 
   const fetchEvents = async () => {
     try {
-      const { data } = axios.get('http://localhost:3001/event');
+      const { data } = await axios.get('http://localhost:3001/event');
 
       return data;
     } catch (err) {
@@ -45,7 +45,6 @@ export const useDate = (nav) => {
       dt.setMonth(new Date().getMonth() + nav);
     }
 
-    const day = dt.getDate();
     const month = dt.getMonth();
     const year = dt.getFullYear();
 
@@ -73,6 +72,7 @@ export const useDate = (nav) => {
         daysArr.push({
           value: i - paddingDays,
           date: dateString,
+          booking: events.filter((e) => e.dateString === dateString),
           weekday: daysAvailable.filter(
             (d) =>
               d.day ===
