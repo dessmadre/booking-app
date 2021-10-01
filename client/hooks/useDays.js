@@ -66,14 +66,13 @@ export const useDate = (nav) => {
     const daysArr = [];
 
     for (let i = 1; i <= paddingDays + daysInMonth; i++) {
+      const dateString = `${dt.toLocaleDateString('en-us', {
+        month: 'long',
+      })} ${i - paddingDays}, ${year}`;
       if (i > paddingDays) {
         daysArr.push({
           value: i - paddingDays,
-          isCurrentDay: i - paddingDays === day && nav === 0,
-          date: `${dt.toLocaleDateString('en-us', { month: 'long' })} ${
-            i - paddingDays
-          },
-           ${year}`,
+          date: dateString,
           weekday: daysAvailable.filter(
             (d) =>
               d.day ===
@@ -86,7 +85,6 @@ export const useDate = (nav) => {
       } else {
         daysArr.push({
           value: 'padding',
-          isCurrentDay: false,
           date: '',
         });
       }
