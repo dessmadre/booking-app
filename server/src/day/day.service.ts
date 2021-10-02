@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { UpdateDayDto } from './dto/updateDay.dto';
 import { Day } from './schema/day.schema';
-import { HourService } from 'src/hour/hour.service';
+import { HourService } from '../hour/hour.service';
 
 @Injectable()
 export class DayService {
