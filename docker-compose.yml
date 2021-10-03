@@ -4,7 +4,8 @@ services:
     image: mongo
     restart: always
     volumes:
-      - ./server/data:/data/db
+      - ./server/data/db:/data/db
+      - ./server/data/test-db:/data/test-db
     ports:
       - '27017:27017'
   api:
@@ -15,6 +16,7 @@ services:
       - db
     environment:
       MONGO_DB: db
+      MONGO_TEST_DB: test-db
 
     ports:
       - '3001:3030'
