@@ -12,7 +12,7 @@ export class HourService {
     @InjectModel('Day') private dayModel: Model<Day>,
   ) {}
 
-  async seedHours() {
+  async seedHours(): Promise<void> {
     const days = await this.dayModel.find();
 
     days.forEach(async (day: Day) => {
@@ -34,11 +34,11 @@ export class HourService {
     });
   }
 
-  async getHours() {
+  async getHours(): Promise<Hour[]> {
     return this.hourModel.find().populate('day');
   }
 
-  async getHour(updateHourDto: UpdateHourDto) {
+  async getHour(updateHourDto: UpdateHourDto): Promise<Hour> {
     const hour = await this.hourModel.findById(updateHourDto.id);
 
     if (!hour) {
@@ -48,7 +48,7 @@ export class HourService {
     return hour;
   }
 
-  async updateHourAvailTrue(updateHourDto: UpdateHourDto) {
+  async updateHourAvailTrue(updateHourDto: UpdateHourDto): Promise<Hour> {
     const hour = await this.hourModel.findById(updateHourDto.id);
 
     if (!hour) {
@@ -62,7 +62,7 @@ export class HourService {
     return hour;
   }
 
-  async updateHourAvailFalse(updateHourDto: UpdateHourDto) {
+  async updateHourAvailFalse(updateHourDto: UpdateHourDto): Promise<Hour> {
     const hour = await this.hourModel.findById(updateHourDto.id);
 
     if (!hour) {
