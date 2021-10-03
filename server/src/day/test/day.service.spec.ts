@@ -1,36 +1,97 @@
-import { MongooseModule } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { HourService } from '../hour/hour.service';
-import { DayService } from './day.service';
-import { DaySchema } from './schema/day.schema';
+import { DayService } from '../day.service';
+import { Day } from '../schema/day.schema';
+import { daysStub } from './stubs/days.stub';
 
-it('can create an instance of day service', async () => {
-  // create mock of the dayService
-  // const fakeDayService = {
-  //   seedDays: () => Promise.resolve([]),
-  //   getDays: () => Promise.resolve([]),
-  //   getDay: (id: number) =>
-  //     Promise.resolve({
-  //       _id: id,
-  //       day: 'Monday',
-  //       hours: [],
-  //       isAvailable: false,
-  //     }),
-  // };
+jest.mock('../day.service');
 
-  const fakeHourService = {
-    seedHours: () => Promise.resolve([]),
-  };
+describe('DayService', () => {
+  let dayService: DayService;
 
-  const module: TestingModule = await Test.createTestingModule({
-    imports: [MongooseModule.forFeature([{ name: 'Day', schema: DaySchema }])],
-    providers: [
-      DayService,
-      { provide: HourService, useValue: fakeHourService },
-    ],
-  }).compile();
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [DayService],
+    }).compile();
 
-  const dayService = module.get(DayService);
+    dayService = module.get<DayService>(DayService);
+  });
 
-  expect(dayService).toBeDefined();
+  it('should be defined', () => {
+    expect(dayService).toBeDefined();
+  });
+
+  describe('seedDays', () => {
+    describe('when seedDays is called', () => {
+      let days: Day[];
+      beforeEach(async () => {
+        days = await dayService.seedDays();
+      });
+      test('then it should call dayService', () => {
+        expect(dayService.seedDays).toBeCalled();
+      });
+      test('then it should return an array of days', () => {
+        expect(days).toEqual([daysStub()]);
+      });
+    });
+  });
+
+  describe('getDays', () => {
+    describe('when getDays get called', () => {
+      let days: Day[];
+      beforeEach(async () => {
+        days = await dayService.getDays();
+      });
+      test('then it should call the dayService', () => {
+        expect(dayService.getDays).toBeCalled();
+      });
+      test('then it should return an array of days', () => {
+        expect(days).toEqual([daysStub()]);
+      });
+    });
+  });
+
+  describe('getDay', () => {
+    describe('when getDay is called', () => {
+      let day: Day;
+      beforeEach(async () => {
+        day = await dayService.getDay(daysStub().id);
+      });
+      test('then it should call the dayService', () => {
+        expect(dayService.getDay).toBeCalled();
+      });
+      test('then it should return a day', () => {
+        expect(day).toEqual(daysStub());
+      });
+    });
+  });
+
+  describe('updateDayAvailTrue', () => {
+    describe('when updateDayAvailTrue is called', () => {
+      let day: Day;
+      beforeEach(async () => {
+        day = await dayService.updateDayAvailTrue(daysStub().id);
+      });
+      test('then it should call the dayService', () => {
+        expect(dayService.updateDayAvailTrue).toBeCalled();
+      });
+      test('then it should return a day', () => {
+        expect(day).toEqual(daysStub());
+      });
+    });
+  });
+
+  describe('updateDayAvailFalse', () => {
+    describe('when updateDayAvailFalse is called', () => {
+      let day: Day;
+      beforeEach(async () => {
+        day = await dayService.updateDayAvailFalse(daysStub().id);
+      });
+      test('then it should call the dayService', () => {
+        expect(dayService.updateDayAvailFalse).toBeCalled();
+      });
+      test('then it should return a day', () => {
+        expect(day).toEqual(daysStub());
+      });
+    });
+  });
 });
