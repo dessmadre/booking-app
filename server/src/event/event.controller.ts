@@ -14,7 +14,7 @@ export class EventController {
 
   @Get('/:id')
   async getEvent(@Param('id') id: Types.ObjectId) {
-    return this.eventService.getEventById({ id });
+    return this.eventService.getEvent({ id });
   }
 
   @Post('/new')

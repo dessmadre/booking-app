@@ -17,7 +17,7 @@ export class EventService {
     return newEvent;
   }
 
-  async getEventById(updateEventDto: UpdateEventDto): Promise<Event> {
+  async getEvent(updateEventDto: UpdateEventDto): Promise<Event> {
     const event = await this.eventModel.findById(updateEventDto.id);
 
     if (!event) {
