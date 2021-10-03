@@ -3,11 +3,11 @@ services:
   db:
     image: mongo
     restart: always
-    volumes:
-      - ./server/data/db:/data/db
-      - ./server/data/test-db:/data/test-db
     ports:
       - '27017:27017'
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./server/data:/data/db
   api:
     build:
       context: ./server
@@ -16,7 +16,6 @@ services:
       - db
     environment:
       MONGO_DB: db
-      MONGO_TEST_DB: test-db
 
     ports:
       - '3001:3030'
