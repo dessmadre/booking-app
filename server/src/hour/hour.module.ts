@@ -3,7 +3,7 @@ import { HourService } from './hour.service';
 import { HourController } from './hour.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HourSchema } from './schema/hour.schema';
-import { DaySchema } from 'src/day/schema/day.schema';
+import { DaySchema } from '../day/schema/day.schema';
 
 @Module({
   imports: [
