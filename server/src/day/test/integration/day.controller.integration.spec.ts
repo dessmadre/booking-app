@@ -7,7 +7,7 @@ import { DatabaseService } from '../../../database/database.service';
 import { AppModule } from '../../../app.module';
 import { daysStub } from '../stubs/days.stub';
 
-describe('DayController', () => {
+describe('DayController (e2e)', () => {
   let dbConnection: Connection;
   let app: INestApplication;
 

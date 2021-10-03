@@ -1,8 +1,7 @@
-import { Day } from '../../schema/day.schema';
+import { Day } from 'src/day/schema/day.schema';
 
 export const daysStub = () => {
   return {
-    id: 1,
     day: 'Monday',
     hours: [],
     isAvailable: false,

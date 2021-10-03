@@ -35,7 +35,7 @@ export class HourService {
   }
 
   async getHours(): Promise<Hour[]> {
-    return this.hourModel.find().populate('day');
+    return this.hourModel.find();
   }
 
   async getHour(updateHourDto: UpdateHourDto): Promise<Hour> {
