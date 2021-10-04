@@ -1,11 +1,12 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { Connection } from 'mongoose';
+
 import { AppModule } from '../../../app.module';
 import * as request from 'supertest';
 import { DatabaseService } from '../../../database/database.service';
 import { eventStub } from '../stubs/event.stub';
-import { CreateEventDto } from 'src/event/dto/createEvent.dto';
+import { CreateEventDto } from '../../dto/createEvent.dto';
 
 describe('EventController (e2e)', () => {
   let dbConnection: Connection;
