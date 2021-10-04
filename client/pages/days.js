@@ -1,9 +1,14 @@
-import axios from 'axios';
+import { useContext, useEffect } from 'react';
 import HoursAvailable from '../components/Hour/HoursAvailable';
-
+import DayContext from '../context/day/dayContext';
 import DashBoardLayout from '../components/layout/DashboardLayout';
 
-export default function Days({ days }) {
+export default function Days() {
+  const dayContext = useContext(DayContext);
+  const { days, getDays } = dayContext;
+  useEffect(() => {
+    getDays();
+  }, []);
   const daysAvailable = days.filter((d) => d.isAvailable);
 
   return (
@@ -18,14 +23,4 @@ export default function Days({ days }) {
       </div>
     </DashBoardLayout>
   );
-}
-
-export async function getStaticProps() {
-  const { data: days } = await axios.get('http://localhost:3001/day');
-
-  return {
-    props: {
-      days,
-    },
-  };
 }

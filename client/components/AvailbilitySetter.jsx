@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import DayContext from '../context/day/dayContext';
 
-export default function AvailabilitySetter({
-  day,
-  setAvailTrue,
-  setAvailFalse,
-}) {
+export default function AvailabilitySetter({ day }) {
+  const dayContext = useContext(DayContext);
   const [isAvailable, setIsAvailable] = useState(day.isAvailable);
+  const { updateDayTrue, updateDayFalse } = dayContext;
 
   return (
     <figure className={`flex flex-col my-1 p-3 border-transparent border-4`}>
@@ -22,7 +21,7 @@ export default function AvailabilitySetter({
           <button
             className='bg-blue-300 hover:bg-blue-400 text-xs md:text-lg p-1 md:p-2 ml-1 mr-1 md:mr-5 rounded-lg'
             onClick={() => {
-              setAvailTrue(day._id);
+              updateDayTrue(day._id);
               setIsAvailable(true);
             }}
           >
@@ -31,7 +30,7 @@ export default function AvailabilitySetter({
           <button
             className='bg-red-300 hover:bg-red-400 text-xs md:text-lg p-1 md:p-2  md:ml-0 rounded-lg'
             onClick={() => {
-              setAvailFalse(day._id);
+              updateDayFalse(day._id);
               setIsAvailable(false);
             }}
           >
