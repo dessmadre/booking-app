@@ -1,4 +1,4 @@
-// Day Actions
+// Day types
 export const GET_DAYS = 'GET_DAYS';
 export const GET_DAYS_ERROR = 'GET_DAYS_ERROR';
 export const GET_DAY = 'GET_DAY';
@@ -11,3 +11,14 @@ export const UPDATE_DAY_AVAILABILITY_FALSE = 'UPDATE_DAY_AVAILABILITY_FALSE';
 export const UPDATE_DAY_AVAILABILITY_FALSE_ERROR =
   'UPDATE_DAY_AVAILABILITY_FALSE_ERROR';
 export const DAYS_LOADING = 'DAYS_LOADING';
+
+// Booking types
+export const GET_EVENTS = 'GET_EVENTS';
+export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
+export const GET_EVENT = 'GET_EVENT';
+export const GET_EVENT_ERROR = 'GET_EVENT_ERROR';
+export const NEW_EVENT = 'NEW_EVENT';
+export const NEW_EVENT_ERROR = 'NEW_EVENT_ERROR';
+export const DELETE_EVENT = 'DELETE_EVENT';
+export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
+export const EVENTS_LOADING = 'EVENTS_LOADING';
