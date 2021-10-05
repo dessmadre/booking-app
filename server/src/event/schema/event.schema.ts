@@ -10,6 +10,15 @@ export class Event extends Document {
   weekday: string;
 
   @Prop()
+  day: number;
+
+  @Prop()
+  month: number;
+
+  @Prop()
+  year: number;
+
+  @Prop()
   dateString: string;
 }
 

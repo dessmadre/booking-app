@@ -64,8 +64,11 @@ describe('EventController (e2e)', () => {
 
   describe('createEvent', () => {
     it('creates an event', async () => {
-      const createEventDto: CreateEventDto = {
+      const createEventDto = {
         hour: eventStub().hour,
+        day: eventStub().day,
+        month: eventStub().month,
+        year: eventStub().year,
         weekday: eventStub().weekday,
         dateString: eventStub().dateString,
       };

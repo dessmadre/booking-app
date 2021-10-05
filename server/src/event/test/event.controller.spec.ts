@@ -32,15 +32,20 @@ describe('EventController', () => {
       beforeEach(async () => {
         createEventDto = {
           hour: eventStub().hour,
+          day: eventStub().day,
+          month: eventStub().month,
+          year: eventStub().year,
           weekday: eventStub().weekday,
           dateString: eventStub().dateString,
         };
-
         event = await eventController.createEvent(createEventDto);
       });
       test('then it should call the eventService', () => {
         expect(eventService.createEvent).toHaveBeenCalledWith({
           hour: createEventDto.hour,
+          day: createEventDto.day,
+          month: createEventDto.month,
+          year: createEventDto.year,
           weekday: createEventDto.weekday,
           dateString: createEventDto.dateString,
         });
