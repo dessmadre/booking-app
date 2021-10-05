@@ -71,6 +71,8 @@ export const useDate = (nav) => {
       if (i > paddingDays) {
         daysArr.push({
           value: i - paddingDays,
+          month: month,
+          year: year,
           date: dateString,
           booking: events.filter((e) => e.dateString === dateString),
           weekday: daysAvailable.filter(

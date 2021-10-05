@@ -1,0 +1,15 @@
+### GET EVENTS
+GET http://localhost:3001/event
+
+### CREATE EVENT
+POST http://localhost:3001/event/new
+Content-Type: application/json
+
+{
+  "hour": "7:00pm",
+  "weekday": "Tuesday",
+  "day": 12,
+  "month": 9,
+  "year": 1995,
+  "dateString": "September 12"
+}

@@ -37,11 +37,21 @@ const BookingState = (props) => {
     }
   };
 
-  const newBooking = async ({ hour, weekday, dateString }) => {
+  const newBooking = async ({
+    hour,
+    weekday,
+    day,
+    month,
+    year,
+    dateString,
+  }) => {
     bookingsLoaded();
     try {
       await axios.post('http://localhost:3001/event/new', {
         hour,
+        day,
+        month,
+        year,
         weekday,
         dateString,
       });

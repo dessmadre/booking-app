@@ -21,6 +21,9 @@ export default function BookingModal({ day, hour, setBooking, setHour }) {
     try {
       const bookingRequest = {
         hour: hour.hour,
+        day: day.value,
+        month: day.month,
+        year: day.year,
         weekday: day.weekday[0].day,
         dateString: day.date,
       };
