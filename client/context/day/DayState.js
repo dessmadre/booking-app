@@ -44,12 +44,12 @@ const DayState = (props) => {
   // Update a the availablity of a day to true
   const updateDayTrue = async (dayId) => {
     try {
-      const { data: day } = await axios.patch(
-        `http://localhost:3001/day/${dayId}/true`
-      );
+      await axios.patch(`http://localhost:3001/day/${dayId}/true`);
+
+      const { data: days } = axios.get('http://localhost:3001/event');
       dispatch({
         type: UPDATE_DAY_AVAILABILITY_TRUE,
-        payload: day,
+        payload: days,
       });
     } catch (err) {
       console.log('Error updating the availabilty of the selected day.');
@@ -62,12 +62,12 @@ const DayState = (props) => {
   // update the availablity of a day to false
   const updateDayFalse = async (dayId) => {
     try {
-      const { data: day } = await axios.patch(
-        `http://localhost:3001/day/${dayId}/false`
-      );
+      await axios.patch(`http://localhost:3001/day/${dayId}/false`);
+
+      const { data: days } = axios.get('http://localhost:3001/event');
       dispatch({
         type: UPDATE_DAY_AVAILABILITY_FALSE,
-        payload: day,
+        payload: days,
       });
     } catch (err) {
       console.log('Error updating to availability of the selected day');
@@ -82,7 +82,6 @@ const DayState = (props) => {
   return (
     <DayContext.Provider
       value={{
-        day: state.day,
         days: state.days,
         loading: state.loading,
         getDays,

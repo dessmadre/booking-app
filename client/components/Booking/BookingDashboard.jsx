@@ -1,8 +1,10 @@
-import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
+import BookingContext from '../../context/booking/bookingContext';
 
 export default function BookingDashboard({ bookings }) {
+  const bookingContext = useContext(BookingContext);
+  const { deleteBooking } = bookingContext;
   const router = useRouter();
   return (
     <section className='w-5/6 md:w-2/3 my-10 p-5 md:p-8 bg-gray-100 rounded-md shadow-xl'>
@@ -15,9 +17,9 @@ export default function BookingDashboard({ bookings }) {
       )}
       {bookings.map((b) => {
         const [isDelete, setIsDelete] = useState(false);
-        const deleteBooking = async (id) => {
+        const deleteABooking = async (id) => {
           try {
-            await axios.delete(`http://localhost:3001/event/${id}`, { id });
+            deleteBooking(id);
             setIsDelete(false);
             router.reload();
           } catch (err) {
@@ -54,7 +56,7 @@ export default function BookingDashboard({ bookings }) {
                   </button>
                   <button
                     className='bg-blue-400 px-2 p-1 rounded-2xl'
-                    onClick={() => deleteBooking(b._id)}
+                    onClick={() => deleteABooking(b._id)}
                   >
                     Confirm
                   </button>

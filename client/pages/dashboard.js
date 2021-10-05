@@ -1,35 +1,26 @@
-import axios from 'axios';
 import { useContext, useEffect } from 'react';
 
 import AvailabilityDashboard from '../components/AvailabilityDashboard';
 import BookingDashboard from '../components/Booking/BookingDashboard';
 import DashBoardLayout from '../components/layout/DashboardLayout';
 import DayContext from '../context/day/dayContext';
+import BookingContext from '../context/booking/bookingContext';
 
-export default function Dashboard({ bookings }) {
+export default function Dashboard() {
   const dayContext = useContext(DayContext);
-  const { loading, days, getDays } = dayContext;
-
-  console.log(process.env.HOST);
+  const bookingContext = useContext(BookingContext);
+  const { loading: daysLoading, days, getDays } = dayContext;
+  const { loading: bookingsLoading, bookings, getBookings } = bookingContext;
 
   useEffect(() => {
     getDays();
+    getBookings();
   }, []);
 
   return (
     <DashBoardLayout>
-      {loading ? 'LOADING' : <AvailabilityDashboard days={days} />}
-      <BookingDashboard bookings={bookings} />
+      {daysLoading ? 'LOADING' : <AvailabilityDashboard days={days} />}
+      {bookingsLoading ? 'LOADING' : <BookingDashboard bookings={bookings} />}
     </DashBoardLayout>
   );
-}
-
-export async function getStaticProps() {
-  const { data: bookings } = await axios.get('http://localhost:3001/event');
-
-  return {
-    props: {
-      bookings,
-    },
-  };
 }

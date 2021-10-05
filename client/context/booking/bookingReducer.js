@@ -1,14 +1,19 @@
-import { GET_EVENTS, NEW_EVENT, DELETE_EVENT, EVENTS_LOADING } from '../types';
+import {
+  GET_BOOKINGS,
+  NEW_BOOKING,
+  DELETE_BOOKING,
+  BOOKINGS_LOADING,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_EVENTS || NEW_EVENT || DELETE_EVENT:
+    case GET_BOOKINGS || NEW_BOOKING || DELETE_BOOKING:
       return {
         ...state,
-        events: action.payload,
+        bookings: action.payload,
         loading: false,
       };
-    case EVENTS_LOADING:
+    case BOOKINGS_LOADING:
       return {
         ...state,
         loading: true,

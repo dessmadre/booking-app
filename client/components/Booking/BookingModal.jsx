@@ -1,7 +1,10 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import BookingContext from '../../context/booking/bookingContext';
 
 export default function BookingModal({ day, hour, setBooking, setHour }) {
+  const bookingContext = useContext(BookingContext);
+  const { newBooking } = bookingContext;
   const [confirm, setConfirm] = useState(false);
   const handleClick = (e) => {
     if (
@@ -17,11 +20,12 @@ export default function BookingModal({ day, hour, setBooking, setHour }) {
   const dateTime = `${day.date} @ ${hour.hour}`;
   const handleBooking = async () => {
     try {
-      await axios.post('http://localhost:3001/event/new', {
+      const bookingRequest = {
         hour: hour.hour,
         weekday: day.weekday[0].day,
         dateString: day.date,
-      });
+      };
+      newBooking(bookingRequest);
       setBooking(null);
       setHour(null);
     } catch (err) {
