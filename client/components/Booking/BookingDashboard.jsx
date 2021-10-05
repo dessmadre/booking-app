@@ -1,11 +1,10 @@
 import { useContext, useState } from 'react';
-import { useRouter } from 'next/router';
 import BookingContext from '../../context/booking/bookingContext';
 
 export default function BookingDashboard({ bookings }) {
   const bookingContext = useContext(BookingContext);
   const { deleteBooking } = bookingContext;
-  const router = useRouter();
+
   return (
     <section className='w-5/6 md:w-2/3 my-10 p-5 md:p-8 bg-gray-100 rounded-md shadow-xl'>
       <h2 className='px-3 mt-5 text-3xl font-bold'>Bookings</h2>
@@ -21,7 +20,6 @@ export default function BookingDashboard({ bookings }) {
           try {
             deleteBooking(id);
             setIsDelete(false);
-            router.reload();
           } catch (err) {
             console.log(err);
           }

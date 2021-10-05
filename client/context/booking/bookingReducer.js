@@ -7,7 +7,13 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_BOOKINGS || NEW_BOOKING || DELETE_BOOKING:
+    case GET_BOOKINGS || NEW_BOOKING:
+      return {
+        ...state,
+        bookings: action.payload,
+        loading: false,
+      };
+    case DELETE_BOOKING:
       return {
         ...state,
         bookings: action.payload,

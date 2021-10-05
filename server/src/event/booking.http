@@ -1,6 +1,10 @@
 ### GET EVENTS
 GET http://localhost:3001/event
 
+
+### DELETE EVENT
+DELETE http://localhost:3001/event/615cd60ca24ccb12ee2d35bf
+
 ### CREATE EVENT
 POST http://localhost:3001/event/new
 Content-Type: application/json

@@ -51,7 +51,6 @@ const BookingState = (props) => {
         hour,
         day,
         month,
-        year,
         weekday,
         dateString,
       });
@@ -72,7 +71,7 @@ const BookingState = (props) => {
   const deleteBooking = async (bookingId) => {
     bookingsLoaded();
     try {
-      await axios.delete(`http://localhost:3001/${bookingId}`);
+      await axios.delete(`http://localhost:3001/event/${bookingId}`);
 
       const { data: bookings } = await axios.get('http://localhost:3001/event');
 
