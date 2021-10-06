@@ -31,6 +31,7 @@ describe('EventController', () => {
       let createEventDto: CreateEventDto;
       beforeEach(async () => {
         createEventDto = {
+          hourString: eventStub().hourString,
           hour: eventStub().hour,
           day: eventStub().day,
           month: eventStub().month,
@@ -43,6 +44,7 @@ describe('EventController', () => {
       test('then it should call the eventService', () => {
         expect(eventService.createEvent).toHaveBeenCalledWith({
           hour: createEventDto.hour,
+          hourString: createEventDto.hourString,
           day: createEventDto.day,
           month: createEventDto.month,
           year: createEventDto.year,

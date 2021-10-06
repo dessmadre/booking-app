@@ -10,8 +10,9 @@ POST http://localhost:3001/event/new
 Content-Type: application/json
 
 {
-  "hour": "7:00pm",
+  "hourString": "7:00pm",
   "weekday": "Tuesday",
+  "hour": 19,
   "day": 12,
   "month": 9,
   "year": 1995,

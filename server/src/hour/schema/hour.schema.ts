@@ -6,6 +6,9 @@ export class Hour extends Document {
   @Prop()
   hour: string;
 
+  @Prop()
+  index: number;
+
   @Prop({ type: Types.ObjectId, ref: 'Day' })
   day: Types.ObjectId;
 

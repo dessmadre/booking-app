@@ -1,5 +1,7 @@
 export class CreateEventDto {
-  hour: string;
+  hourString: string;
+
+  hour: number;
 
   day: number;
 

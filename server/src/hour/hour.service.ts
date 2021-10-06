@@ -23,6 +23,7 @@ export class HourService {
           hour: `${i % 12 || (i === 0 && 12) || (i === 12 && 12)}:00 ${
             i <= 11 ? 'am' : 'pm'
           }`,
+          index: i + 1,
           day: day._id,
         });
 

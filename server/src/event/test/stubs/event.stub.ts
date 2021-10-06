@@ -2,7 +2,8 @@ import { Event } from '../../schema/event.schema';
 
 export const eventStub = () => {
   return {
-    hour: '4:00 am',
+    hourString: '4:00 am',
+    hour: 4,
     day: 12,
     month: 9,
     year: 1995,

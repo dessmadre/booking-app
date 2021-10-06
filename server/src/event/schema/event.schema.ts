@@ -4,7 +4,10 @@ import { Document } from 'mongoose';
 @Schema()
 export class Event extends Document {
   @Prop()
-  hour: string;
+  hourString: string;
+
+  @Prop()
+  hour: number;
 
   @Prop()
   weekday: string;
